@@ -3,17 +3,48 @@
 
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
     <title></title>
   </head>
+
+  <script>
+    function gowno(){
+      let wiadomosc = prompt("Jak masz na imie");
+      document.getElementById("doopa").textContent = wiadomosc;
+    }
+
+    function darkmode(){
+      let current_text = document.getElementById("darkmode").textContent;
+      if(current_text == "Dark Mode: Off"){
+        document.body.style = "background-color:#2f2f2f;";
+        document.getElementById("darkmode").textContent = "Dark Mode: On";
+        document.getElementById("file_to_encrypt").style = "color: white;";
+        clicked = true;
+      }
+      else{
+        document.body.style = "background-color: white;"
+        document.getElementById("darkmode").textContent = "Dark Mode: Off";
+        document.getElementById("file_to_encrypt").style = "color: black;";
+        clicked = false;
+      }
+    }
+  
+  </script>
 
   <body>
     <header>
       The Ultimate Encryption Tool
+      <button onclick="darkmode()" id="darkmode">Dark Mode: Off</button>
     </header>
     <div id="form_holder">
-      
+      <form>
+        <input type="file" name="file_to_encrypt" id="file_to_encrypt"><br>
+        <select name="encrypt_type">
+          <option value="Gowno" selected>Gowno</option>
+          <option value="Twoje!!">Twoje!!</option>
+        </select><br>
+        <button id="submit" name="submit" onclick="gowno()">Wyślij</button><br>
+      </form>
     </div>
   </body>
-
 </html>
