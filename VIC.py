@@ -2,16 +2,17 @@ import random
 
 plik = 'Hej, jestem janek!'
 
-class VIC:
-    def create_board2(self,dlugosc):
+class VIC():
+    @staticmethod
+    def create_board2(dlugosc):
         board2 = [] #tyle kolumn jaka jest długość uzyskanego post_doc
         for i in range(dlugosc):
             board2.append(random.randint(0,9))
         return board2  
 
 
-
-    def encrypt(self,plik):
+    @staticmethod
+    def encrypt(plik):
 
         board1 = [
             ['',0,1,2,3,4,5,6,7,8,9],
@@ -43,7 +44,7 @@ class VIC:
         print(final_doc)   #wersja ostateczna zawsze inna, druga połowa ciągu to losowy klucz po którym napis został zaszyfrowany
         return final_doc
 
-
+    @staticmethod
     def decrypt(plik):
         board1 = [
             ['',0,1,2,3,4,5,6,7,8,9],

@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title></title>
   </head>
 
@@ -19,14 +20,17 @@
         document.body.style = "background-color:#2f2f2f;";
         document.getElementById("darkmode").textContent = "Dark Mode: On";
         document.getElementById("file_to_encrypt").style = "color: white;";
-        clicked = true;
       }
       else{
         document.body.style = "background-color: white;"
         document.getElementById("darkmode").textContent = "Dark Mode: Off";
         document.getElementById("file_to_encrypt").style = "color: black;";
-        clicked = false;
       }
+
+      $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        $('.custom-file-label').html(fileName);
+    });
     }
   
   </script>
@@ -36,15 +40,38 @@
       The Ultimate Encryption Tool
       <button onclick="darkmode()" id="darkmode">Dark Mode: Off</button>
     </header>
+
+    <div id="switch">
+      <button class="switch_button" style="background-color: white; color: black; ">Decrypt</button>
+      <button class="switch_button">Encrypt</button>
+    </div>
+
     <div id="form_holder">
       <form>
-        <input type="file" name="file_to_encrypt" id="file_to_encrypt"><br>
-        <select name="encrypt_type">
-          <option value="Gowno" selected>Gowno</option>
-          <option value="Twoje!!">Twoje!!</option>
-        </select><br>
-        <button id="submit" name="submit" onclick="gowno()">Wyślij</button><br>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <select class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <option class="dropdown-item" href="#">Action</option>
+            <option class="dropdown-item" href="#">Another action</option>
+            <option class="dropdown-item" href="#">Something else here</option>
+          </div>
+          </select> 
+        </div>
+        <button id="submit" name="submit" onclick="gowno()" class="btn btn-primary">Wyślij</button><br>
       </form>
     </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
 </html>
