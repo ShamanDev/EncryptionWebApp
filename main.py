@@ -11,7 +11,6 @@ app.debug = True
 def encrypt():
     pass
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
