@@ -1,6 +1,5 @@
 import random
 
-plik = 'Hej, jestem janek!'
 
 class VIC():
     @staticmethod
@@ -102,10 +101,6 @@ class VIC():
                             pomoc_lista.append(string1[i])
                             break
              
-
-        print(string1) 
-        print("pomoc_lista",pomoc_lista) 
-
         for i in range(pomoc_lista.__len__()):
             if pomoc_lista[i].__len__()>1:
                 help_me = int(pomoc_lista[i][1])
@@ -121,8 +116,4 @@ class VIC():
                 help_me+=1
                 final_decrypted+=str(board1[1][help_me])
 
-        print(final_decrypted)
-        return final_decrypted
-
-#VIC.encrypt(plik)
-#VIC.decrypt('15414522297741912502090892509709568377838432897357182890')    
+        return final_decrypted  

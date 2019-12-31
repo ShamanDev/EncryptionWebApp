@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 
   <head>
@@ -8,20 +8,21 @@
     <title></title>
   </head>
 
-  <script>
-    function gowno(){
-      let wiadomosc = prompt("Jak masz na imie");
-      document.getElementById("doopa").textContent = wiadomosc;
+  <script type="text/javascript">
+    function input_change_text(){
+      document.getElementsByClassName('custom-file-label')[0].textContent = document.getElementsByClassName('custom-file-input')[0].files[0].name;
+      console.log(document.getElementsByClassName('custom-file-label')[0].textContent);
     }
-
     function darkmode(){
       let current_text = document.getElementById("darkmode").textContent;
       if(current_text == "Dark Mode: Off"){
         document.body.style = "background-color:#2f2f2f;";
+        document.getElementsByTagName('select')[0].style = "background-color:#2f2f2f; color:white;"
         document.getElementById("darkmode").textContent = "Dark Mode: On";
         document.getElementById("file_to_encrypt").style = "color: white;";
       }
-      else{
+      else {
+        document.getElementsByTagName('select')[0].style = "background-color:white; color:black;"
         document.body.style = "background-color: white;"
         document.getElementById("darkmode").textContent = "Dark Mode: Off";
         document.getElementById("file_to_encrypt").style = "color: black;";
@@ -47,22 +48,19 @@
     </div>
 
     <div id="form_holder">
-      <form>
-        <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+      <form action="https://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv">
+          <div class="input-group mb-3">
+              <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02" accept=".txt" onchange="input_change_text()">
+                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+              </div>
           </div>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
-          </div>
-        </div>
         <div class="dropdown">
-          <select class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <option class="dropdown-item" href="#">Action</option>
-            <option class="dropdown-item" href="#">Another action</option>
-            <option class="dropdown-item" href="#">Something else here</option>
-          </div>
+            <select type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <option value="" disabled selected>Select your option</option>
+                <option value="szyfr_vic">VIC</option>
+                <option value="szyfr_vigenere">Szyfr Vigenère'a</option>
+        </div>
           </select> 
         </div>
         <button id="submit" name="submit" onclick="gowno()" class="btn btn-primary">Wyślij</button><br>
