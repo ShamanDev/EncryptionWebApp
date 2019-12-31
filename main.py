@@ -9,6 +9,7 @@ app.debug = True
 
 @app.route("/encrypt_file")
 def encrypt():
+    pass
 
 
 @app.route("/")
