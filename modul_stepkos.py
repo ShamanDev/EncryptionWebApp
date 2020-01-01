@@ -51,7 +51,7 @@ class Vigenere:
 
                 # Przerwanie petli zwracajac wartosc
                 if t > len(text)-1:
-                    return answer
+                    return ''.join(answer)
   
 
     @staticmethod
@@ -89,11 +89,5 @@ class Vigenere:
 
                 # Przerwanie petli zwracajac wartosc
                 if t > len(text)-1:
-                    return answer
+                    return ''.join(answer)
   
-
-
-if __name__ == "__main__":
-    print(Vigenere.encrypt("kghr", "onomatopeja"))
-    print(Vigenere.decipher("kghr", "ytvdkzvgoph"))
-

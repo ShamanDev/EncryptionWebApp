@@ -11,19 +11,36 @@
   <script type="text/javascript">
     function input_change_text(){
       document.getElementsByClassName('custom-file-label')[0].textContent = document.getElementsByClassName('custom-file-input')[0].files[0].name;
-      console.log(document.getElementsByClassName('custom-file-label')[0].textContent);
     }
+
+    function change_mode(id){
+      button1 = document.getElementsByClassName('switch_button')[0];
+      button2 = document.getElementsByClassName('switch_button')[1];
+      if (id==1 && button1.style.backgroundColor=="white"){
+        button1.style = "background-color: blueviolet; color: white;";
+        button2.style = "background-color: white; color: black;";
+        document.getElementsByTagName('form')[0].action = "/decrypt_file";
+      }
+      if (id==2 && button2.style.backgroundColor=="white"){
+        button1.style = "background-color: white; color: black;";
+        button2.style = "background-color: blueviolet; color: white;";
+        document.getElementsByTagName('form')[0].action = "/encrypt_file";
+      }
+    }
+
     function darkmode(){
       let current_text = document.getElementById("darkmode").textContent;
       if(current_text == "Dark Mode: Off"){
         document.body.style = "background-color:#2f2f2f;";
-        document.getElementsByTagName('select')[0].style = "background-color:#2f2f2f; color:white;"
+        document.getElementsByTagName('select')[0].style = "background-color:#2f2f2f; color:white;";
+        document.getElementsByClassName('custom-file-label')[0].style = "background-color: #2f2f2f; color:white;";
         document.getElementById("darkmode").textContent = "Dark Mode: On";
         document.getElementById("file_to_encrypt").style = "color: white;";
       }
       else {
-        document.getElementsByTagName('select')[0].style = "background-color:white; color:black;"
-        document.body.style = "background-color: white;"
+        document.getElementsByTagName('select')[0].style = "background-color:white; color:black;";
+        document.body.style = "background-color: white;";
+        document.getElementsByClassName('custom-file-label')[0].style = "background-color: white; color:black;";
         document.getElementById("darkmode").textContent = "Dark Mode: Off";
         document.getElementById("file_to_encrypt").style = "color: black;";
       }
@@ -33,6 +50,7 @@
         $('.custom-file-label').html(fileName);
     });
     }
+
   
   </script>
 
@@ -43,33 +61,28 @@
     </header>
 
     <div id="switch">
-      <button class="switch_button" style="background-color: white; color: black; ">Decrypt</button>
-      <button class="switch_button">Encrypt</button>
+      <button class="switch_button" style="background-color: white; color: black; " onclick="change_mode(1)">Decrypt</button>
+      <button class="switch_button" onclick="change_mode(2)">Encrypt</button>
     </div>
 
     <div id="form_holder">
-      <form action="https://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv">
-          <div class="input-group mb-3">
-              <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile02" accept=".txt" onchange="input_change_text()">
-                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-              </div>
-          </div>
-        <div class="dropdown">
-            <select type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <option value="" disabled selected>Select your option</option>
-                <option value="szyfr_vic">VIC</option>
-                <option value="szyfr_vigenere">Szyfr Vigenère'a</option>
-        </div>
-          </select> 
-        </div>
-        <button id="submit" name="submit" onclick="gowno()" class="btn btn-primary">Wyślij</button><br>
-      </form>
-    </div>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <form action="/encrypt_file" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" name="user_file" class="custom-file-input" id="inputGroupFile02" accept=".txt" onchange="input_change_text()">
+                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                </div>
+            </div>
+            <div class="dropdown">
+                <select type="button" name="options" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="szyfr_vic">VIC</option>
+                    <option value="szyfr_vigenere">Szyfr Vigenère'a</option>
+                    <option value="cezar">Szyfr Cezara</option>
+                </select>
+            </div>
+            <input type="submit" id="submit" name="submit"value="Send" /><br>
+        </form>
+    </div>   
   </body>
 </html>

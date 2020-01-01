@@ -37,8 +37,6 @@ header p{
     font-size: 20px;
     background-color: blueviolet;
     color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 #switch{
