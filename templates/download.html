@@ -9,10 +9,10 @@
 
 <body>
     {% if method == "encrypt" %}
-        <a href="{{ url_for('static', filename='files/encrypted_file.txt' )}}" download="encrypted_file.txt">POBIESZ</a>
+        <a href="{{ url_for('static', filename='files/encrypted_file.txt' )}}" download="encrypted_file.txt">POBIERZ</a>
     {% endif %}
     {% if method == "decrypt" %}
-    <a href="{{ url_for('static', filename='files/decrypted_file.txt' )}}" download="decrypted_file.txt">POBIESZ</a>
+    <a href="{{ url_for('static', filename='files/decrypted_file.txt' )}}" download="decrypted_file.txt">POBIERZ</a>
     {% endif %}
 </body>
 </html>
